@@ -51,8 +51,8 @@ void mnrf(unsigned period, istream& in, ofstream& out) {
 	char buffer[buffer_size];
 
 	size_t count = 1;
-	size_t start, pos;
-	char prev_nuc;
+	size_t start = 0, pos = 0;
+	char prev_nuc = '\0';
 
 	track_name[0] = '\0';
 
