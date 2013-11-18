@@ -51,7 +51,7 @@ bool get_fasta_header(const char* line, char* header) {
 }
 
 
-void mnrf(unsigned period, istream& in, ofstream& out) {
+void mnrf(unsigned nrepeats, istream& in, ofstream& out) {
 
 	const char delim = '\t';
 	const unsigned track_name_size = 32;
@@ -78,7 +78,7 @@ void mnrf(unsigned period, istream& in, ofstream& out) {
 			/// succeeded in getting header: new track
 
 			// clean up last stretch
-			if (count >= period) {
+			if (count >= nrepeats) {
 				// record current mononucleotide stretch
 				out
 					<< track_name << delim
@@ -116,7 +116,7 @@ void mnrf(unsigned period, istream& in, ofstream& out) {
 				} else {
 
 					// clean up last stretch
-					if (count >= period) {
+					if (count >= nrepeats) {
 						// record current mononucleotide stretch
 						out
 							<< track_name << delim
@@ -141,7 +141,7 @@ void mnrf(unsigned period, istream& in, ofstream& out) {
 	}
 
 	// clean up last stretch
-	if (count >= period) {
+	if (count >= nrepeats) {
 		// record current mononucleotide stretch
 		out
 			<< track_name << delim
@@ -157,14 +157,14 @@ void mnrf(unsigned period, istream& in, ofstream& out) {
 int main(int argc, char* argv[]) {
 
 	if (argc < 4) {
-		cout << "Usage: mnrf <period> <input.fa> <output.bed>" << endl;
+		cout << "Usage: mnrf <nrepeats> <input.fa> <output.bed>" << endl;
 		return 0;
 	}
 
 	ifstream infile;
 	ofstream outfile;
 
-	int period = atoi(argv[1]);
+	int nrepeats = atoi(argv[1]);
 	infile.open(argv[2]);
 	outfile.open(argv[3]);
 
@@ -176,11 +176,11 @@ int main(int argc, char* argv[]) {
 		throw runtime_error("Error: could not open output file");
 	}
 
-	if (period < 2) {
-		throw domain_error("Error: period must be at least 2");
+	if (nrepeats < 2) {
+		throw domain_error("Error: nrepeats must be at least 2");
 	}
 
-	mnrf(period, infile, outfile);
+	mnrf(nrepeats, infile, outfile);
 
 	infile.close();
 	outfile.close();
