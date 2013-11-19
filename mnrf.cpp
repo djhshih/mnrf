@@ -107,9 +107,7 @@ void mnrf(unsigned nrepeats, istream& in, ofstream& out) {
 
 				if (nucleotide == '\0') break;
 
-				if (nucleotide == ignore_nuc) continue;
-
-				if (nucleotide == prev_nuc) {
+				if (nucleotide == prev_nuc && nucleotide != ignore_nuc) {
 
 					++count;
 
@@ -127,7 +125,7 @@ void mnrf(unsigned nrepeats, istream& in, ofstream& out) {
 					}
 
 					// prepare for next mononucleotide stretch
-					prev_nuc = buffer[i];
+					prev_nuc = nucleotide;
 					start = pos;
 					count = 1;
 				}
