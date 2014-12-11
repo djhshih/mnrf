@@ -21,7 +21,7 @@ Compilation
 
 Edit the `Makefile` as necessary. Then compile.
 
-$ make 
+    $ make 
 
 
 Usage
