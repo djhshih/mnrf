@@ -27,13 +27,13 @@ $ make
 Usage
 -----
 
-$ ./mnrf
-Usage: mnrf <nrepeats> <input.fa> <output.bed>
+    $ ./mnrf
+    Usage: mnrf <nrepeats> <input.fa> <output.bed>
 
 Run the test case by:
 
-$ ./mnrf 5 test/test.fa output.tsv
-$ diff output.tsv test/answer.tsv
+    $ ./mnrf 5 test/test.fa output.tsv
+    $ diff output.tsv test/answer.tsv
 
 (No output indicates success.)
 
