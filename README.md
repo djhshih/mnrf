@@ -1,14 +1,7 @@
 Mononucleotide repeat finder
 ============================
 
-`mnrf` is a simple program to find mononucleotide repeats of specified size
-(number times of repeat) in a FASTA file with one or more tracks.
-
-Author:    David J. H. Shih  <djh.shih@gmail.com>  
-Version:   0.1  
-Date:      2013-11-18  
-License:   GPL >= 3
-
+`mnrf` is a simple program to find mononucleotide repeats of specified length in a FASTA file with one or more tracks.
 
 Prerequisites
 -------------
@@ -19,21 +12,29 @@ Prerequisites
 Compilation
 -----------
 
-Edit the `Makefile` as necessary. Then compile.
-
-    $ make 
+```
+./configure
+make 
+make install
+```
 
 
 Usage
 -----
 
-    $ ./mnrf
+```
+./mnrf
+
     Usage: mnrf <nrepeats> <input.fa> <output.bed>
+
+```
 
 Run the test case by:
 
-    $ ./mnrf 5 test/test.fa output.tsv
-    $ diff output.tsv test/answer.tsv
+```
+./mnrf 5 test/test.fa output.bed
+diff output.bed test/answer.bed
+```
 
 (No output indicates success.)
 
