@@ -1,4 +1,3 @@
-AC_PREREQ(2.69)
 AC_INIT(mnrf, 0.1, https://github.com/djhshih/mnrf/issues)
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_SRCDIR([mnrf.cpp])
