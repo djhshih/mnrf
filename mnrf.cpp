@@ -107,8 +107,6 @@ void mnrf(unsigned nrepeats, istream& in, ofstream& out) {
 
 				char nucleotide = buffer[i];
 
-				cout << nucleotide;
-
 				if (nucleotide == '\0') break;
 
 				if (nucleotide == prev_nuc && nucleotide != ignore_nuc) {
