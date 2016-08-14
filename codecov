@@ -1,0 +1,5 @@
+#!/bin/sh
+
+for f in $(find . | grep -E '\.cpp$'); do
+	gcov $f
+done

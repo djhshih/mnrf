@@ -2,3 +2,8 @@ language: cpp
 script:
   - autoreconf --force --install && ./configure
   - make && make check
+after_success:
+  - ./configure CXXFLAGS='-coverage -O0'
+  - make && make check
+  - ./codecov
+  - bash <(curl -s https://codecov.io/bash)
