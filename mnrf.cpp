@@ -40,7 +40,8 @@ bool get_fasta_header(const char* line, char* header) {
 	// find first space character
 	size_t count = 0;
 	for (size_t i = 1; i < buffer_size; ++i) {
-		if (line[i] == ' ') break;
+		char c = line[i];
+		if (c == ' ' || c == '\0') break;
 		++count;
 	}
 	// copy to header
@@ -73,9 +74,9 @@ void mnrf(unsigned nrepeats, istream& in, ofstream& out) {
 		// ignore empty lines
 		if (buffer[0] == '\0') continue;
 
-		if (get_fasta_header(buffer, track_name)) {
+		if (buffer[0] == '>') {
 
-			/// succeeded in getting header: new track
+			/// new track
 
 			// clean up last stretch
 			if (count >= nrepeats) {
@@ -86,6 +87,8 @@ void mnrf(unsigned nrepeats, istream& in, ofstream& out) {
 					<< prev_nuc << delim
 					<< count << endl;
 			}
+
+			get_fasta_header(buffer, track_name);
 			
 			// initialize for new track
 			start = pos = 0;
@@ -103,6 +106,8 @@ void mnrf(unsigned nrepeats, istream& in, ofstream& out) {
 			for (size_t i = 0; i < buffer_size; ++i) {
 
 				char nucleotide = buffer[i];
+
+				cout << nucleotide;
 
 				if (nucleotide == '\0') break;
 
