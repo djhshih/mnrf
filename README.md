@@ -17,6 +17,7 @@ Compilation
 -----------
 
 ```
+autoreconf -fi
 ./configure
 make 
 make install
