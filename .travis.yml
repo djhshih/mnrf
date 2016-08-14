@@ -3,6 +3,7 @@ script:
   - autoreconf --force --install && ./configure
   - make && make check
 after_success:
+  - make clean
   - ./configure CXXFLAGS='-coverage -O0'
   - make && make check
   - ./codecov
