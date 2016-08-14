@@ -116,8 +116,7 @@ void mnrf(unsigned nrepeats, istream& in, ofstream& out) {
 					// clean up last stretch
 					if (count >= nrepeats) {
 						// record current mononucleotide stretch
-						out
-							<< track_name << delim
+						out << track_name << delim
 							<< start << delim
 							<< (start + count) << delim
 							<< prev_nuc << delim
@@ -141,8 +140,7 @@ void mnrf(unsigned nrepeats, istream& in, ofstream& out) {
 	// clean up last stretch
 	if (count >= nrepeats) {
 		// record current mononucleotide stretch
-		out
-			<< track_name << delim
+		out << track_name << delim
 			<< start << delim
 			<< (start + count) << delim
 			<< prev_nuc << delim
