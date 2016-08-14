@@ -4,7 +4,6 @@ script:
   - make && make check
 after_success:
   - make clean
-  - ./configure CXXFLAGS='-coverage -O0'
-  - make && make check
+  - make CXXFLAGS='-coverage -O0' && make check
   - ./codecov
   - bash <(curl -s https://codecov.io/bash)
